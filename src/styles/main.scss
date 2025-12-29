@@ -10,6 +10,7 @@
 @use './components/label' as *;
 @use './components/input' as *;
 @use './components/textarea' as *;
+@use './components/toast' as *;
 
 // Page component styles
 @use './components/app' as *;
