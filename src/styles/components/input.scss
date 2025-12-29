@@ -1,0 +1,65 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.input {
+    display: flex;
+    height: 2.25rem;
+    width: 100%;
+    min-width: 0;
+    border-radius: $radius-md;
+    border: 1px solid $border;
+    background-color: $input-background;
+    padding: $spacing-1 $spacing-3;
+    font-size: $text-base;
+    @include transition(color, box-shadow);
+    outline: none;
+
+    @include md {
+        font-size: $text-sm;
+    }
+
+    &::placeholder {
+        color: $muted-foreground;
+    }
+
+    &::selection {
+        background-color: $primary;
+        color: $primary-foreground;
+    }
+
+    &:focus-visible {
+        @include focus-ring;
+    }
+
+    &[aria-invalid="true"] {
+        border-color: $destructive;
+        box-shadow: 0 0 0 3px rgba($destructive, 0.2);
+    }
+
+    &:disabled {
+        pointer-events: none;
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    &[type="file"] {
+        &::file-selector-button {
+            display: inline-flex;
+            height: 1.75rem;
+            border: 0;
+            background-color: transparent;
+            font-size: $text-sm;
+            font-weight: $font-medium;
+            color: $foreground;
+        }
+    }
+
+    @include dark {
+        background-color: rgba($dark-input, 0.3);
+        border-color: $dark-input;
+
+        &[aria-invalid="true"] {
+            box-shadow: 0 0 0 3px rgba($destructive, 0.4);
+        }
+    }
+}

@@ -1,0 +1,18 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.card {
+    background-color: $card;
+    color: $card-foreground;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+    border-radius: $radius-xl;
+    border: 1px solid $border;
+
+    @include dark {
+        background-color: $dark-card;
+        color: $dark-card-foreground;
+        border-color: $dark-border;
+    }
+}

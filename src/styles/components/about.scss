@@ -1,0 +1,197 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.about {
+    padding: 5rem 0;
+    background-color: rgba($muted, 0.3);
+
+    @include dark {
+        background-color: rgba($dark-muted, 0.3);
+    }
+}
+
+.about-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 $spacing-4;
+
+    @include sm {
+        padding: 0 $spacing-6;
+    }
+
+    @include lg {
+        padding: 0 $spacing-8;
+    }
+}
+
+.about-header {
+    text-align: center;
+    margin-bottom: $spacing-12;
+
+    h2 {
+        font-size: $text-3xl;
+        margin-bottom: $spacing-4;
+
+        @include sm {
+            font-size: $text-4xl;
+        }
+    }
+
+    p {
+        font-size: $text-lg;
+        color: $muted-foreground;
+        max-width: 42rem;
+        margin: 0 auto;
+
+        @include dark {
+            color: $dark-muted-foreground;
+        }
+    }
+}
+
+.about-journey {
+    margin-bottom: 4rem;
+
+    h3 {
+        color: $primary;
+        margin-bottom: $spacing-4;
+
+        @include dark {
+            color: $dark-primary;
+        }
+    }
+
+    .prose {
+        max-width: none;
+        font-size: $text-lg;
+        line-height: 1.75;
+
+        p {
+            color: $muted-foreground;
+
+            @include dark {
+                color: $dark-muted-foreground;
+            }
+
+            &:not(:last-child) {
+                margin-bottom: $spacing-4;
+            }
+        }
+    }
+}
+
+.about-skills {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-6;
+    margin-bottom: 4rem;
+
+    @include md {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.skill-card {
+    padding: $spacing-6;
+    @include transition-all;
+    transition-duration: $transition-slow;
+
+    &:hover {
+        box-shadow: $shadow-lg;
+        transform: translateY(-4px);
+    }
+
+    .skill-icon {
+        width: 3rem;
+        height: 3rem;
+        border-radius: $radius-lg;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: $spacing-4;
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        &.primary {
+            background-color: rgba($primary, 0.1);
+            color: $primary;
+
+            @include dark {
+                background-color: rgba($dark-primary, 0.1);
+                color: $dark-primary;
+            }
+        }
+
+        &.secondary {
+            background-color: rgba($secondary, 0.1);
+            color: $secondary;
+
+            @include dark {
+                background-color: rgba($dark-secondary, 0.1);
+                color: $dark-secondary;
+            }
+        }
+
+        &.accent {
+            background-color: rgba($accent, 0.2);
+            color: $accent;
+
+            @include dark {
+                background-color: rgba($dark-accent, 0.2);
+                color: $dark-accent;
+            }
+        }
+    }
+
+    h4 {
+        margin-bottom: $spacing-2;
+    }
+
+    p {
+        color: $muted-foreground;
+
+        @include dark {
+            color: $dark-muted-foreground;
+        }
+    }
+}
+
+.about-technologies {
+    h3 {
+        margin-bottom: $spacing-6;
+        text-align: center;
+    }
+
+    .tech-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: $spacing-3;
+
+        span {
+            padding: $spacing-2 $spacing-4;
+            background-color: $card;
+            border: 1px solid $border;
+            border-radius: $radius-lg;
+            @include transition(border-color, color);
+
+            @include dark {
+                background-color: $dark-card;
+                border-color: $dark-border;
+            }
+
+            &:hover {
+                border-color: $primary;
+                color: $primary;
+
+                @include dark {
+                    border-color: $dark-primary;
+                    color: $dark-primary;
+                }
+            }
+        }
+    }
+}

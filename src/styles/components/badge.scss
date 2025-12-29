@@ -1,0 +1,106 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-md;
+    border: 1px solid transparent;
+    padding: calc($spacing-1 / 2) $spacing-2;
+    font-size: $text-xs;
+    font-weight: $font-medium;
+    width: fit-content;
+    white-space: nowrap;
+    flex-shrink: 0;
+    gap: $spacing-1;
+    @include transition(color, box-shadow);
+    overflow: hidden;
+
+    svg {
+        width: 0.75rem;
+        height: 0.75rem;
+        pointer-events: none;
+    }
+
+    &:focus-visible {
+        border-color: $ring;
+        box-shadow: 0 0 0 3px rgba($ring, 0.5);
+    }
+
+    &[aria-invalid="true"] {
+        border-color: $destructive;
+        box-shadow: 0 0 0 3px rgba($destructive, 0.2);
+    }
+}
+
+// Badge variants
+.badge-default {
+    border-color: transparent;
+    background-color: $primary;
+    color: $primary-foreground;
+
+    &:is(a):hover {
+        background-color: rgba($primary, 0.9);
+    }
+
+    @include dark {
+        background-color: $dark-primary;
+    }
+}
+
+.badge-secondary {
+    border-color: transparent;
+    background-color: $secondary;
+    color: $secondary-foreground;
+
+    &:is(a):hover {
+        background-color: rgba($secondary, 0.9);
+    }
+
+    @include dark {
+        background-color: $dark-secondary;
+    }
+}
+
+.badge-destructive {
+    border-color: transparent;
+    background-color: $destructive;
+    color: white;
+
+    &:is(a):hover {
+        background-color: rgba($destructive, 0.9);
+    }
+
+    &:focus-visible {
+        box-shadow: 0 0 0 3px rgba($destructive, 0.2);
+    }
+
+    @include dark {
+        background-color: rgba($destructive, 0.6);
+
+        &:focus-visible {
+            box-shadow: 0 0 0 3px rgba($destructive, 0.4);
+        }
+    }
+}
+
+.badge-outline {
+    border: 1px solid $border;
+    color: $foreground;
+
+    &:is(a):hover {
+        background-color: $accent;
+        color: $accent-foreground;
+    }
+
+    @include dark {
+        border-color: $dark-border;
+        color: $dark-foreground;
+
+        &:is(a):hover {
+            background-color: $dark-accent;
+            color: $dark-accent-foreground;
+        }
+    }
+}

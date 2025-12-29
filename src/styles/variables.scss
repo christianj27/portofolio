@@ -1,0 +1,97 @@
+// Color Variables
+$background: #FDFBF7;
+$foreground: #2C2416;
+$card: #ffffff;
+$card-foreground: #2C2416;
+$popover: #ffffff;
+$popover-foreground: #2C2416;
+$primary: #8B3A62;
+$primary-foreground: #FDFBF7;
+$secondary: #2E5C8A;
+$secondary-foreground: #FDFBF7;
+$muted: #E8DCC8;
+$muted-foreground: #6B5D4F;
+$accent: #C4A57B;
+$accent-foreground: #2C2416;
+$destructive: #d4183d;
+$destructive-foreground: #ffffff;
+$border: rgba(139, 58, 98, 0.15);
+$input-background: #F5EFE6;
+$ring: #8B3A62;
+
+// Dark Mode Colors
+$dark-background: #1A1510;
+$dark-foreground: #FDFBF7;
+$dark-card: #2C2416;
+$dark-card-foreground: #FDFBF7;
+$dark-popover: #2C2416;
+$dark-popover-foreground: #FDFBF7;
+$dark-primary: #B85C87;
+$dark-primary-foreground: #FDFBF7;
+$dark-secondary: #4A7BAD;
+$dark-secondary-foreground: #FDFBF7;
+$dark-muted: #3D3427;
+$dark-muted-foreground: #C4A57B;
+$dark-accent: #6B5D4F;
+$dark-accent-foreground: #FDFBF7;
+$dark-border: rgba(184, 92, 135, 0.2);
+$dark-input: #3D3427;
+$dark-ring: #B85C87;
+
+// Spacing
+$spacing-1: 0.25rem;
+$spacing-2: 0.5rem;
+$spacing-3: 0.75rem;
+$spacing-4: 1rem;
+$spacing-5: 1.25rem;
+$spacing-6: 1.5rem;
+$spacing-8: 2rem;
+$spacing-10: 2.5rem;
+$spacing-12: 3rem;
+$spacing-16: 4rem;
+$spacing-20: 5rem;
+
+// Border Radius
+$radius-sm: 0.375rem;
+$radius-md: 0.625rem;
+$radius-lg: 0.75rem;
+$radius-xl: 1rem;
+$radius-2xl: 1.5rem;
+$radius-3xl: 1.875rem;
+$radius-full: 9999px;
+
+// Font Sizes
+$text-xs: 0.75rem;
+$text-sm: 0.875rem;
+$text-base: 1rem;
+$text-lg: 1.125rem;
+$text-xl: 1.25rem;
+$text-2xl: 1.5rem;
+$text-3xl: 1.875rem;
+$text-4xl: 2.25rem;
+$text-5xl: 3rem;
+$text-6xl: 3.75rem;
+
+// Font Weights
+$font-normal: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+// Transitions
+$transition-fast: 150ms;
+$transition-base: 200ms;
+$transition-slow: 300ms;
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+$shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+$shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+$shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+$shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);

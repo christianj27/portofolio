@@ -1,0 +1,118 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background-color: rgba($background, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid $border;
+
+    @include dark {
+        background-color: rgba($dark-background, 0.95);
+        border-bottom-color: $dark-border;
+    }
+}
+
+.header-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 $spacing-4;
+
+    @include sm {
+        padding: 0 $spacing-6;
+    }
+
+    @include lg {
+        padding: 0 $spacing-8;
+    }
+}
+
+.header-content {
+    @include flex-between;
+    height: 4rem;
+}
+
+.header-logo {
+    flex-shrink: 0;
+
+    h3 {
+        color: $primary;
+        font-weight: $font-bold;
+
+        @include dark {
+            color: $dark-primary;
+        }
+    }
+}
+
+.header-nav {
+    display: none;
+
+    @include md {
+        display: flex;
+        align-items: center;
+        gap: $spacing-8;
+    }
+
+    button {
+        color: $foreground;
+        font-weight: $font-semibold;
+        @include transition(color);
+
+        &:hover {
+            color: $primary;
+        }
+
+        @include dark {
+            color: $dark-foreground;
+
+            &:hover {
+                color: $dark-primary;
+            }
+        }
+    }
+}
+
+.header-mobile-button {
+    @include md {
+        display: none;
+    }
+}
+
+.header-mobile-nav {
+    padding: $spacing-4 0;
+    border-top: 1px solid $border;
+
+    @include md {
+        display: none;
+    }
+
+    @include dark {
+        border-top-color: $dark-border;
+    }
+
+    button {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: $spacing-2 0;
+        color: $foreground;
+        @include transition(color);
+
+        &:hover {
+            color: $primary;
+        }
+
+        @include dark {
+            color: $dark-foreground;
+
+            &:hover {
+                color: $dark-primary;
+            }
+        }
+    }
+}

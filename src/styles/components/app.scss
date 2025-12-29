@@ -1,0 +1,6 @@
+@use '../variables.scss' as *;
+@use '../mixins.scss' as *;
+
+.app {
+    min-height: 100vh;
+}

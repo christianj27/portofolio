@@ -1,0 +1,165 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// Button base styles
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-2;
+    white-space: nowrap;
+    border-radius: $radius-md;
+    font-size: $text-sm;
+    font-weight: $font-medium;
+    @include transition(all);
+    outline: none;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    &:disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    &:focus-visible {
+        border-color: $ring;
+        box-shadow: 0 0 0 3px rgba($ring, 0.5);
+    }
+
+    svg {
+        pointer-events: none;
+        flex-shrink: 0;
+        width: 1rem;
+        height: 1rem;
+    }
+}
+
+// Button variants
+.btn-default {
+    background-color: $primary;
+    color: $primary-foreground;
+
+    &:hover {
+        background-color: rgba($primary, 0.9);
+    }
+
+    @include dark {
+        background-color: $dark-primary;
+    }
+}
+
+.btn-destructive {
+    background-color: $destructive;
+    color: white;
+
+    &:hover {
+        background-color: rgba($destructive, 0.9);
+    }
+
+    &:focus-visible {
+        box-shadow: 0 0 0 3px rgba($destructive, 0.2);
+    }
+
+    @include dark {
+        background-color: rgba($destructive, 0.6);
+        box-shadow: 0 0 0 3px rgba($destructive, 0.4);
+    }
+}
+
+.btn-outline {
+    border: 1px solid $border;
+    background-color: $background;
+    color: $foreground;
+
+    &:hover {
+        background-color: $accent;
+        color: $accent-foreground;
+    }
+
+    @include dark {
+        background-color: rgba($dark-input, 0.3);
+        border-color: $dark-input;
+
+        &:hover {
+            background-color: rgba($dark-input, 0.5);
+        }
+    }
+}
+
+.btn-secondary {
+    background-color: $secondary;
+    color: $secondary-foreground;
+
+    &:hover {
+        background-color: rgba($secondary, 0.8);
+    }
+
+    @include dark {
+        background-color: $dark-secondary;
+    }
+}
+
+.btn-ghost {
+    &:hover {
+        background-color: $accent;
+        color: $accent-foreground;
+    }
+
+    @include dark {
+        &:hover {
+            background-color: rgba($dark-accent, 0.5);
+        }
+    }
+}
+
+.btn-link {
+    color: $primary;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    @include dark {
+        color: $dark-primary;
+    }
+}
+
+// Button sizes
+.btn-sm {
+    height: 2rem;
+    border-radius: $radius-md;
+    gap: $spacing-1 + 0.125rem;
+    padding: 0 $spacing-3;
+
+    &:has(svg) {
+        padding: 0 $spacing-2 + 0.125rem;
+    }
+}
+
+.btn-default-size {
+    height: 2.25rem;
+    padding: $spacing-2 $spacing-4;
+
+    &:has(svg) {
+        padding: 0 $spacing-3;
+    }
+}
+
+.btn-lg {
+    height: 2.5rem;
+    border-radius: $radius-md;
+    padding: 0 $spacing-6;
+
+    &:has(svg) {
+        padding: 0 $spacing-4;
+    }
+}
+
+.btn-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: $radius-md;
+    padding: 0;
+}

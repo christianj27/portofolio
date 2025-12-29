@@ -1,0 +1,83 @@
+@use './variables.scss' as *;
+
+// Responsive breakpoints
+@mixin sm {
+    @media (min-width: $breakpoint-sm) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media (min-width: $breakpoint-md) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media (min-width: $breakpoint-lg) {
+        @content;
+    }
+}
+
+@mixin xl {
+    @media (min-width: $breakpoint-xl) {
+        @content;
+    }
+}
+
+// Flexbox utilities
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+// Transitions
+@mixin transition($properties...) {
+    transition-property: #{$properties};
+    transition-duration: $transition-base;
+    transition-timing-function: ease-in-out;
+}
+
+@mixin transition-all {
+    transition: all $transition-base ease-in-out;
+}
+
+// Text truncation
+@mixin truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+@mixin line-clamp($lines) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+// Focus styles
+@mixin focus-ring {
+    outline: none;
+    border-color: $ring;
+    box-shadow: 0 0 0 3px rgba($ring, 0.5);
+}
+
+// Dark mode
+@mixin dark {
+    .dark & {
+        @content;
+    }
+}

@@ -1,0 +1,48 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.textarea {
+    resize: none;
+    border: 1px solid $border;
+    display: flex;
+    field-sizing: content;
+    min-height: 4rem;
+    width: 100%;
+    border-radius: $radius-md;
+    background-color: $input-background;
+    padding: $spacing-2 $spacing-3;
+    font-size: $text-base;
+    @include transition(color, box-shadow);
+    outline: none;
+
+    @include md {
+        font-size: $text-sm;
+    }
+
+    &::placeholder {
+        color: $muted-foreground;
+    }
+
+    &:focus-visible {
+        @include focus-ring;
+    }
+
+    &[aria-invalid="true"] {
+        border-color: $destructive;
+        box-shadow: 0 0 0 3px rgba($destructive, 0.2);
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    @include dark {
+        background-color: rgba($dark-input, 0.3);
+        border-color: $dark-input;
+
+        &[aria-invalid="true"] {
+            box-shadow: 0 0 0 3px rgba($destructive, 0.4);
+        }
+    }
+}

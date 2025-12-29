@@ -1,0 +1,215 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.contact {
+    padding: 5rem 0;
+    background-color: rgba($muted, 0.3);
+
+    @include dark {
+        background-color: rgba($dark-muted, 0.3);
+    }
+}
+
+.contact-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 $spacing-4;
+
+    @include sm {
+        padding: 0 $spacing-6;
+    }
+
+    @include lg {
+        padding: 0 $spacing-8;
+    }
+}
+
+.contact-header {
+    text-align: center;
+    margin-bottom: $spacing-12;
+
+    h2 {
+        font-size: $text-3xl;
+        margin-bottom: $spacing-4;
+
+        @include sm {
+            font-size: $text-4xl;
+        }
+    }
+
+    p {
+        font-size: $text-lg;
+        color: $muted-foreground;
+        max-width: 42rem;
+        margin: 0 auto;
+
+        @include dark {
+            color: $dark-muted-foreground;
+        }
+    }
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $spacing-8;
+
+    @include lg {
+        grid-template-columns: repeat(2, 1fr);
+        gap: $spacing-12;
+    }
+}
+
+.contact-info {
+    h3 {
+        margin-bottom: $spacing-6;
+    }
+
+    .contact-description {
+        color: $muted-foreground;
+        margin-bottom: $spacing-8;
+
+        @include dark {
+            color: $dark-muted-foreground;
+        }
+    }
+}
+
+.contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-6;
+}
+
+.contact-info-item {
+    padding: $spacing-4;
+    @include transition(box-shadow);
+
+    &:hover {
+        box-shadow: $shadow-md;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        gap: $spacing-4;
+
+        .contact-icon {
+            padding: $spacing-3;
+            background-color: $muted;
+            border-radius: $radius-lg;
+            @include transition(transform);
+
+            @include dark {
+                background-color: $dark-muted;
+            }
+
+            &.primary {
+                color: $primary;
+
+                @include dark {
+                    color: $dark-primary;
+                }
+            }
+
+            &.secondary {
+                color: $secondary;
+
+                @include dark {
+                    color: $dark-secondary;
+                }
+            }
+
+            &.accent {
+                color: $accent;
+
+                @include dark {
+                    color: $dark-accent;
+                }
+            }
+
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        &:hover .contact-icon {
+            transform: scale(1.1);
+        }
+
+        .contact-details {
+            .contact-label {
+                color: $muted-foreground;
+
+                @include dark {
+                    color: $dark-muted-foreground;
+                }
+            }
+
+            .contact-value {
+                @include transition(color);
+            }
+        }
+
+        &:hover .contact-value {
+            color: $primary;
+
+            @include dark {
+                color: $dark-primary;
+            }
+        }
+    }
+}
+
+.contact-cta {
+    padding: $spacing-6;
+    margin-top: $spacing-8;
+    background-color: rgba($primary, 0.05);
+    border: 1px solid rgba($primary, 0.2);
+
+    @include dark {
+        background-color: rgba($dark-primary, 0.05);
+        border-color: rgba($dark-primary, 0.2);
+    }
+
+    h4 {
+        margin-bottom: $spacing-2;
+    }
+
+    p {
+        color: $muted-foreground;
+
+        @include dark {
+            color: $dark-muted-foreground;
+        }
+    }
+}
+
+.contact-form-card {
+    padding: $spacing-6;
+
+    @include lg {
+        padding: $spacing-8;
+    }
+
+    h3 {
+        margin-bottom: $spacing-6;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-6;
+
+        .form-field {
+            .label {
+                margin-bottom: $spacing-2;
+            }
+        }
+
+        button[type="submit"] {
+            width: 100%;
+        }
+    }
+}
