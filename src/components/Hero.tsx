@@ -72,7 +72,7 @@ export function Hero() {
                                 <Linkedin className="h-5 w-5" />
                             </a>
                             <a
-                                href="mailto:christianjeremia2705@gmail.com"
+                                href="mailto:christian@christianjeremia.com"
                                 className="mail"
                             >
                                 <Mail className="h-5 w-5" />

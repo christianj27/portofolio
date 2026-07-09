@@ -31,7 +31,7 @@ export function Footer() {
                             <Linkedin />
                         </a>
                         <a
-                            href="mailto:christianjeremia2705@gmail.com"
+                            href="mailto:christian@christianjeremia.com"
                             className="mail"
                         >
                             <Mail />
