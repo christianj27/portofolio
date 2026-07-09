@@ -8,7 +8,7 @@ export function Projects() {
         {
             title: 'Digital Garden — Quartz Configuration',
             description: 'Custom Quartz v5 static site configuration powering my digital garden. Features knowledge graph visualization, Obsidian vault integration, custom Head.tsx component, and a full nginx + Caddy + Cloudflare deployment pipeline.',
-            image: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&h=500&fit=crop',
+            image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=500&fit=crop',
             tags: ['TypeScript', 'Quartz', 'Node.js', 'Nginx', 'Cloudflare'],
             github: 'https://github.com/christianj27/garden-site',
             demo: 'https://garden.christianjeremia.com',
@@ -49,7 +49,7 @@ export function Projects() {
         {
             title: 'Badminton Draw — Tournament Randomizer',
             description: 'A React + TypeScript web app built for the GPdI Imanuel Badminton Tournament 2025. Randomly generates team draws with a clean, intuitive interface. Uses Supabase as the backend database for storing participant and match data.',
-            image: 'https://images.unsplash.com/photo-1626224854586-d52e4a7a1ca2?w=800&h=500&fit=crop',
+            image: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&h=500&fit=crop',
             tags: ['React', 'TypeScript', 'Vite', 'Supabase'],
             github: 'https://github.com/christianj27/badminton-draw',
             demo: null,
