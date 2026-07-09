@@ -6,7 +6,6 @@ import { Textarea } from './ui/textarea';
 import { Button } from './ui/button';
 import { Label } from './ui/label';
 import { Toast, ToastContainer } from './ui/toast';
-import emailjs from '@emailjs/browser';
 
 export function Contact() {
     const [formData, setFormData] = useState({
@@ -23,22 +22,27 @@ export function Contact() {
         setIsSubmitting(true);
 
         try {
-            await emailjs.send(
-                import.meta.env.VITE_EMAILJS_SERVICE_ID, // EmailJS Service ID from environment variables
-                import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // EmailJS Template ID from environment variables
-                {
-                    from_name: formData.name,
-                    from_email: formData.email,
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
                     subject: formData.subject,
                     message: formData.message,
-                },
-                import.meta.env.VITE_EMAILJS_PUBLIC_KEY // EmailJS Public Key from environment variables
-            );
+                }),
+            });
 
-            setToast({ message: 'Thank you for your message! I will get back to you soon.', type: 'success' });
+            const result = await response.json();
+
+            if (!response.ok) {
+                throw new Error(result.error || 'Failed to send message');
+            }
+
+            setToast({ message: result.message, type: 'success' });
             setFormData({ name: '', email: '', subject: '', message: '' });
         } catch (error) {
-            console.error('EmailJS Error:', error);
+            console.error('Contact form error:', error);
             setToast({ message: 'Failed to send message. Please try again.', type: 'error' });
         } finally {
             setIsSubmitting(false);
