@@ -47,6 +47,6 @@ This project is open source and available under the [MIT License](LICENSE).
 
 Feel free to reach out if you have any questions or suggestions!
 
-- Email: christianjeremia2705@gmail.com
+- Email: christian@christianjeremia.com
 - LinkedIn: [Christian Jeremia](https://www.linkedin.com/in/christianjeremia)
 - GitHub: [@christianj27](https://github.com/christianj27)

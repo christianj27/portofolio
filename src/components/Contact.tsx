@@ -49,8 +49,8 @@ export function Contact() {
         {
             icon: Mail,
             label: 'Email',
-            value: 'christianjeremia2705@gmail.com',
-            href: 'mailto:christianjeremia2705@gmail.com',
+            value: 'christian@christianjeremia.com',
+            href: 'mailto:christian@christianjeremia.com',
             color: 'text-primary',
         },
         {
