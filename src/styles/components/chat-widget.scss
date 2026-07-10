@@ -330,6 +330,101 @@
       background-color: $dark-muted;
       color: $dark-foreground;
     }
+
+    // Markdown styling
+    p {
+      margin: 0;
+      &:not(:last-child) {
+        margin-bottom: $spacing-2;
+      }
+    }
+
+    strong {
+      font-weight: $font-bold;
+    }
+
+    em {
+      font-style: italic;
+    }
+
+    a {
+      color: $secondary;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      @include transition(color);
+
+      &:hover {
+        color: $primary;
+      }
+
+      @include dark {
+        color: $dark-secondary;
+
+        &:hover {
+          color: $dark-primary;
+        }
+      }
+    }
+
+    ul, ol {
+      margin: $spacing-1 0;
+      padding-left: $spacing-5;
+
+      li {
+        margin-bottom: $spacing-1;
+      }
+    }
+
+    code {
+      background-color: rgba($foreground, 0.08);
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 0.85em;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+
+      @include dark {
+        background-color: rgba($dark-foreground, 0.1);
+      }
+    }
+
+    pre {
+      background-color: rgba($foreground, 0.06);
+      padding: $spacing-2 $spacing-3;
+      border-radius: $radius-md;
+      overflow-x: auto;
+      margin: $spacing-2 0;
+
+      code {
+        background: none;
+        padding: 0;
+      }
+
+      @include dark {
+        background-color: rgba($dark-foreground, 0.08);
+      }
+    }
+
+    blockquote {
+      border-left: 3px solid $primary;
+      padding-left: $spacing-3;
+      margin: $spacing-2 0;
+      color: $muted-foreground;
+
+      @include dark {
+        border-color: $dark-primary;
+        color: $dark-muted-foreground;
+      }
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid $border;
+      margin: $spacing-3 0;
+
+      @include dark {
+        border-color: $dark-border;
+      }
+    }
   }
 }
 

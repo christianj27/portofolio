@@ -1,5 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -130,7 +132,15 @@ export function ChatWidget() {
                   msg.role === 'user' ? 'chat-message--user' : 'chat-message--assistant'
                 }`}
               >
-                <div className="chat-message__bubble">{msg.content}</div>
+                <div className="chat-message__bubble">
+                  {msg.role === 'assistant' ? (
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {msg.content}
+                    </ReactMarkdown>
+                  ) : (
+                    msg.content
+                  )}
+                </div>
               </div>
             ))}
             {isLoading && (
