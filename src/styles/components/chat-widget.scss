@@ -1,0 +1,461 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// ============================================================
+// Floating Action Button
+// ============================================================
+
+.chat-fab {
+  position: fixed;
+  bottom: $spacing-6;
+  right: $spacing-6;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+  padding: $spacing-3 $spacing-5;
+  background-color: $primary;
+  color: $primary-foreground;
+  border-radius: $radius-full;
+  box-shadow: $shadow-xl, 0 0 0 0 rgba($primary, 0.5);
+  cursor: pointer;
+  @include transition-all;
+  animation: chat-fab-pulse 2s ease-in-out infinite;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: $shadow-2xl;
+    animation: none; // stop pulsing on hover
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  @include dark {
+    background-color: $dark-primary;
+    box-shadow: $shadow-xl, 0 0 0 0 rgba($dark-primary, 0.4);
+  }
+
+  // Hide when chat is open
+  &--hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+  }
+}
+
+.chat-fab__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+
+.chat-fab__label {
+  font-size: $text-sm;
+  font-weight: $font-semibold;
+  white-space: nowrap;
+
+  // Hide label on very small screens
+  @media (max-width: 380px) {
+    display: none;
+  }
+}
+
+// Pulse animation ring
+.chat-fab__pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: $radius-full;
+  border: 2px solid rgba($primary, 0.4);
+  animation: chat-fab-ring 2s ease-in-out infinite;
+
+  @include dark {
+    border-color: rgba($dark-primary, 0.3);
+  }
+}
+
+@keyframes chat-fab-pulse {
+  0%, 100% {
+    box-shadow: $shadow-xl, 0 0 0 0 rgba($primary, 0.5);
+  }
+  50% {
+    box-shadow: $shadow-xl, 0 0 20px 6px rgba($primary, 0.15);
+  }
+}
+
+// Dark mode overrides for the FAB (can't use @keyframes inside @include dark)
+.dark .chat-fab {
+  box-shadow: $shadow-xl, 0 0 0 0 rgba($dark-primary, 0.4);
+  animation-name: chat-fab-pulse-dark;
+}
+
+@keyframes chat-fab-pulse-dark {
+  0%, 100% {
+    box-shadow: $shadow-xl, 0 0 0 0 rgba($dark-primary, 0.4);
+  }
+  50% {
+    box-shadow: $shadow-xl, 0 0 20px 6px rgba($dark-primary, 0.1);
+  }
+}
+
+.dark .chat-fab:hover {
+  animation: none;
+}
+
+@keyframes chat-fab-ring {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+// ============================================================
+// Chat Panel
+// ============================================================
+
+.chat-panel {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  background-color: $card;
+  color: $card-foreground;
+  border: 1px solid $border;
+  box-shadow: $shadow-2xl;
+  overflow: hidden;
+
+  @include dark {
+    background-color: $dark-card;
+    color: $dark-card-foreground;
+    border-color: $dark-border;
+  }
+
+  // Mobile: full screen from bottom
+  @media (max-width: #{$breakpoint-md - 1px}) {
+    inset: 0;
+    top: auto;
+    height: 85vh;
+    border-radius: $radius-2xl $radius-2xl 0 0;
+    animation: chat-slide-up $transition-slow ease-out;
+  }
+
+  // Desktop: floating card bottom-right
+  @include md {
+    bottom: calc($spacing-6 + 4rem);
+    right: $spacing-6;
+    width: 380px;
+    max-height: 560px;
+    border-radius: $radius-xl;
+    animation: chat-pop-in $transition-slow ease-out;
+    transform-origin: bottom right;
+  }
+}
+
+@keyframes chat-slide-up {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes chat-pop-in {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// ============================================================
+// Chat Panel — Header
+// ============================================================
+
+.chat-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-4 $spacing-5;
+  border-bottom: 1px solid $border;
+  background-color: rgba($primary, 0.05);
+  flex-shrink: 0;
+
+  @include dark {
+    border-color: $dark-border;
+    background-color: rgba($dark-primary, 0.08);
+  }
+}
+
+.chat-panel__header-left {
+  display: flex;
+  align-items: center;
+  gap: $spacing-3;
+}
+
+.chat-panel__sparkle-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: $primary;
+
+  @include dark {
+    color: $dark-primary;
+  }
+}
+
+.chat-panel__title {
+  font-size: $text-sm;
+  font-weight: $font-semibold;
+  margin: 0;
+}
+
+.chat-panel__subtitle {
+  font-size: $text-xs;
+  color: $muted-foreground;
+  margin: 0;
+
+  @include dark {
+    color: $dark-muted-foreground;
+  }
+}
+
+.chat-panel__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: $radius-md;
+  color: $muted-foreground;
+  cursor: pointer;
+  @include transition-all;
+
+  &:hover {
+    background-color: $muted;
+    color: $foreground;
+  }
+
+  @include dark {
+    color: $dark-muted-foreground;
+
+    &:hover {
+      background-color: $dark-muted;
+      color: $dark-foreground;
+    }
+  }
+
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+}
+
+// ============================================================
+// Chat Panel — Messages Area
+// ============================================================
+
+.chat-panel__messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-4;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-3;
+
+  // Custom scrollbar
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba($muted-foreground, 0.2);
+    border-radius: 10px;
+  }
+}
+
+// ============================================================
+// Chat Message Bubbles
+// ============================================================
+
+.chat-message {
+  display: flex;
+  max-width: 85%;
+
+  &--user {
+    align-self: flex-end;
+  }
+
+  &--assistant {
+    align-self: flex-start;
+  }
+}
+
+.chat-message__bubble {
+  padding: $spacing-3 $spacing-4;
+  border-radius: $radius-lg;
+  font-size: $text-sm;
+  line-height: 1.5;
+  word-break: break-word;
+
+  .chat-message--user & {
+    background-color: $primary;
+    color: $primary-foreground;
+    border-bottom-right-radius: $spacing-1;
+
+    @include dark {
+      background-color: $dark-primary;
+    }
+  }
+
+  .chat-message--assistant & {
+    background-color: $muted;
+    color: $foreground;
+    border-bottom-left-radius: $spacing-1;
+
+    @include dark {
+      background-color: $dark-muted;
+      color: $dark-foreground;
+    }
+  }
+}
+
+// Typing indicator
+.chat-message__bubble--typing {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: $spacing-4 $spacing-5;
+}
+
+.chat-typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: $muted-foreground;
+  animation: typing-bounce 1.4s ease-in-out infinite;
+
+  @include dark {
+    background-color: $dark-muted-foreground;
+  }
+
+  &:nth-child(1) { animation-delay: 0s; }
+  &:nth-child(2) { animation-delay: 0.2s; }
+  &:nth-child(3) { animation-delay: 0.4s; }
+}
+
+@keyframes typing-bounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  30% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+// ============================================================
+// Chat Panel — Input Area
+// ============================================================
+
+.chat-panel__input {
+  display: flex;
+  align-items: center;
+  gap: $spacing-2;
+  padding: $spacing-3 $spacing-4;
+  border-top: 1px solid $border;
+  background-color: $background;
+  flex-shrink: 0;
+
+  @include dark {
+    border-color: $dark-border;
+    background-color: $dark-background;
+  }
+}
+
+.chat-panel__input-field {
+  flex: 1;
+  padding: $spacing-2 $spacing-4;
+  border: 1px solid $border;
+  border-radius: $radius-full;
+  background-color: $input-background;
+  color: $foreground;
+  font-size: $text-sm;
+  font-family: inherit;
+  outline: none;
+  @include transition(border-color, box-shadow);
+
+  &::placeholder {
+    color: $muted-foreground;
+  }
+
+  &:focus {
+    border-color: $ring;
+    box-shadow: 0 0 0 3px rgba($ring, 0.2);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+  }
+
+  @include dark {
+    background-color: $dark-input;
+    color: $dark-foreground;
+    border-color: $dark-border;
+
+    &::placeholder {
+      color: $dark-muted-foreground;
+    }
+  }
+}
+
+.chat-panel__send-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: $radius-full;
+  background-color: $primary;
+  color: $primary-foreground;
+  cursor: pointer;
+  @include transition-all;
+  flex-shrink: 0;
+
+  &:hover:not(:disabled) {
+    background-color: rgba($primary, 0.85);
+    transform: scale(1.05);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.95);
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  @include dark {
+    background-color: $dark-primary;
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
